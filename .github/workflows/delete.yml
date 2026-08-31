@@ -11,14 +11,19 @@ on:
 jobs:
   delete:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: ["3.10"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
     - name: Run Action
@@ -29,7 +34,7 @@ jobs:
         pip install beautifulsoup4
         python .github/actions.py 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v7
       with:
         commit-message: ':package: [:robot:] Delete package from PyPi index'
         title: '[🤖] Delete `${{ inputs.package_name }}` from PyPi index'
