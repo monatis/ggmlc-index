@@ -18,12 +18,19 @@
   <!-- Custom Styles & Favicon -->
   <link href="../static/favicon.svg" rel="icon" type="image/svg+xml" />
   <link href="../static/package_styles.css" rel="stylesheet" />
+  
+  <!-- Package Context Config -->
+  <script>
+    window.current_repo_owner = '{{REPO_OWNER}}';
+    window.current_repo_name = '{{REPO_NAME}}';
+    window.url_readme_main = '{{LONG_DESC}}';
+  </script>
   <script src="../static/package_page.js" defer></script>
   
-  <title>_package_name - ggmlc PyPi Index</title>
+  <title>{{PACKAGE_NAME}} - ggmlc PyPi Index</title>
 </head>
   
-<body>
+<body data-owner="{{REPO_OWNER}}" data-repo="{{REPO_NAME}}">
   <div class="container">
     <header class="header">
       <button onclick="redirectToIndex()" class="goback-button" title="Back to Index">
@@ -33,16 +40,16 @@
         </svg>
       </button>
       <div class="header-titles">
-        <h1 class="pkg-main-title">_package_name</h1>
-        <span id="latest-version" class="version-pill">_latest_version</span>
-        <span id="latest-tag" hidden>_latest_tag</span>
+        <h1 class="pkg-main-title">{{PACKAGE_NAME}}</h1>
+        <span id="latest-version" class="version-pill">{{LATEST_VERSION}}</span>
+        <span id="latest-tag" hidden>{{LATEST_TAG}}</span>
       </div>
     </header>
 
     <div class="install-card">
       <div class="install-label">Install command:</div>
       <div class="install-command-wrapper">
-        <code id="pip-install-cmd">pip install _package_name --extra-index-url https://monatis.github.io/ggmlc-index/</code>
+        <code id="pip-install-cmd">pip install {{PACKAGE_NAME}} --extra-index-url https://monatis.github.io/ggmlc-index/</code>
         <button id="copy-btn" class="copy-button" onclick="copyInstallCmd()" title="Copy command">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -60,11 +67,11 @@
           <h6 class="sidebar-title">Project Info</h6>
           <div class="meta-item">
             <span class="meta-label">Author:</span>
-            <span id="author-name" class="meta-value">_author</span>
+            <span id="author-name" class="meta-value">{{AUTHOR}}</span>
           </div>
-          <div class="meta-item" id="package-short-desc" style="display:none;">_short_description</div>
+          <div class="meta-item" id="package-short-desc" style="display:none;">{{SHORT_DESC}}</div>
           <div class="meta-item">
-            <button id="repoHomepage" class="button-primary-outline" onclick="openLinkInNewTab('_homepage')">
+            <button id="repoHomepage" class="button-primary-outline" onclick="openLinkInNewTab('{{HOMEPAGE}}')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
@@ -76,7 +83,7 @@
         <div class="sidebar-card">
           <h6 class="sidebar-title">Releases</h6>
           <div class="versions-list" id="versions">
-<!-- _VERSIONS_LIST_ -->
+<!-- {{VERSIONS_LIST}} -->
           </div>
         </div>
       </aside>
@@ -87,7 +94,7 @@
         <section class="section-card" id="distribution-files">
           <h5 class="section-title">Pre-built Distribution Packages</h5>
           <p class="section-desc">Downloadable wheels and source archives for direct installation or pip discovery:</p>
-<!-- _FILES_SECTIONS_ -->
+<!-- {{FILES_SECTIONS}} -->
         </section>
 
         <!-- README Description -->
@@ -100,11 +107,5 @@
       </main>
     </div>
   </div>
-
-  <script>
-    var current_repo_owner = '_repo_owner';
-    var current_repo_name = '_repo_name';
-    var url_readme_main = '_long_description';
-  </script>
 </body>
 </html>

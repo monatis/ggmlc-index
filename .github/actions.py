@@ -426,18 +426,18 @@ def render_package_html(pkg_name, owner, repo, releases, author="", short_desc="
     raw_readme_url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/README.md"
 
     html = template
-    html = html.replace("_package_name", pkg_name)
-    html = html.replace("_norm_package_name", norm_pkg)
-    html = html.replace("_latest_version", latest_version)
-    html = html.replace("_latest_tag", latest_tag)
-    html = html.replace("_homepage", homepage)
-    html = html.replace("_repo_owner", owner)
-    html = html.replace("_repo_name", repo)
-    html = html.replace("_author", author)
-    html = html.replace("_short_description", short_desc)
-    html = html.replace("_long_description", raw_readme_url)
-    html = html.replace("<!-- _VERSIONS_LIST_ -->", "\n".join(version_items_html))
-    html = html.replace("<!-- _FILES_SECTIONS_ -->", "\n".join(files_sections_html))
+    html = html.replace("{{PACKAGE_NAME}}", pkg_name)
+    html = html.replace("{{NORM_PACKAGE_NAME}}", norm_pkg)
+    html = html.replace("{{LATEST_VERSION}}", latest_version)
+    html = html.replace("{{LATEST_TAG}}", latest_tag)
+    html = html.replace("{{HOMEPAGE}}", homepage)
+    html = html.replace("{{REPO_OWNER}}", owner)
+    html = html.replace("{{REPO_NAME}}", repo)
+    html = html.replace("{{AUTHOR}}", author)
+    html = html.replace("{{SHORT_DESC}}", short_desc)
+    html = html.replace("{{LONG_DESC}}", raw_readme_url)
+    html = html.replace("<!-- {{VERSIONS_LIST}} -->", "\n".join(version_items_html))
+    html = html.replace("<!-- {{FILES_SECTIONS}} -->", "\n".join(files_sections_html))
 
     return html
 
