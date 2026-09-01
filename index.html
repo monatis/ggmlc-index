@@ -1,75 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <meta content="1.0" name="pypi:repository-version"/>
   <!-- Skeleton CSS -->
   <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet"/>
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&amp;display=swap" rel="stylesheet" type="text/css"/>
-  <!-- Favicon -->
-  <link href="https://gist.githubusercontent.com/astariul/c09af596e802e945d3032774e10e1047/raw/f693a2e2b65966494da082887bc4be2917f615e4/random_icon.svg" rel="icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" type="text/css"/>
   <!-- Custom Styles -->
   <link href="static/index_styles.css" rel="stylesheet"/>
   <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-latest.min.js">
-  </script>
-  <!-- Our JS -->
-  <script src="static/pypi_checker.js" type="text/javascript">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
   </script>
   <title>
-   Pypi - ggmlc
+   ggmlc PyPi Index
   </title>
  </head>
  <body>
   <div class="container">
-   <section class="header">
-    <img class="value-img" src="https://gist.githubusercontent.com/astariul/c09af596e802e945d3032774e10e1047/raw/f693a2e2b65966494da082887bc4be2917f615e4/random_icon.svg" width="150"/>
-    <br/>
-    <br/>
-    <h2 class="title">
-     ggmlc PyPi
-    </h2>
-   </section>
-   <br/>
-   <p>
-    Welcome to the private Python package index of ggmlc !
-    <br/>
-    You can install packages with :
+   <header class="header">
+    <h1 class="title">
+     ggmlc Python Package Index
+    </h1>
+    <p class="subtitle">
+     Custom PyPI-compatible repository serving pre-built wheel artifacts directly from GitHub Releases.
+    </p>
+   </header>
+   <div class="intro-card">
+    <p>
+     Install packages from this index using pip by providing
+     <code>
+      --extra-index-url
+     </code>
+     :
+    </p>
     <pre><code>pip install &lt;package_name&gt; --extra-index-url https://monatis.github.io/ggmlc-index/</code></pre>
-   </p>
-   <hr/>
-   <h6 class="text-header">
-    Packages
-   </h6>
-   <a class="card" href="ggmlc/">
-    ggmlc
-    <span>
-    </span>
-    <span class="version">
-     0.1.2
-    </span>
-    <br/>
-    <span class="description">
-     A multi-framework neural network compiler lowering PyTorch, JAX, Flax, and Keras models to portable, high-performance GGML execution
-    </span>
-   </a>
+   </div>
+   <input class="search-box" id="pkg-search" oninput="filterPackages()" placeholder="Search packages..." type="text"/>
+   <h2 class="text-header">
+    Available Packages
+   </h2>
+   <div class="packages-grid" id="packages-list">
+    <a class="card" href="ggmlc/">
+     <div class="card-header">
+      <span class="pkg-title">
+       ggmlc
+      </span>
+      <span class="version">
+       0.1.2
+      </span>
+     </div>
+     <div class="description">
+      A multi-framework neural network compiler lowering PyTorch, JAX, Flax, and Keras models to portable, high-performance GGML execution
+     </div>
+    </a>
+   </div>
   </div>
   <script>
-   $(document).ready(function(){
-      for (let lnk of document.getElementsByTagName('a')) {
-          var content = lnk.textContent.trim().replace(/\s\s+/g, ' ').split(" ");
-          var pkg_name = content[0];
-          var pkg_vers = content[1];
-
-          function mark_red() {
-              lnk.classList.add("redalert");
-          }
-
-          check_supply_chain_attack(pkg_name, pkg_vers, mark_red);
-      }
-  });
+   function filterPackages() {
+      const q = document.getElementById('pkg-search').value.toLowerCase();
+      const cards = document.querySelectorAll('.packages-grid .card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
   </script>
  </body>
 </html>

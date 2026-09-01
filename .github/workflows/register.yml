@@ -3,62 +3,67 @@ name: register
 on:
   workflow_dispatch:
     inputs:
-      package_name:
-        description: 'Package name'
+      repository:
+        description: 'GitHub Repository (e.g. monatis/ggmlc or https://github.com/monatis/ggmlc)'
         required: true
         type: string
-      version:
-        description: 'Version of the package (tag name)'
-        required: true
+      tag:
+        description: 'Release tag to index (e.g. v0.1.2 or "all" to index all releases)'
+        required: false
+        default: 'all'
+        type: string
+      package_name:
+        description: 'Package name (optional, defaults to repository name)'
+        required: false
         type: string
       author:
-        description: 'Author(s) of the package'
-        required: true
+        description: 'Author(s) of the package (optional)'
+        required: false
         type: string
       short_desc:
-        description: 'A short description of the package to show on the index'
-        required: true
-        type: string
-      homepage:
-        description: 'Homepage of the package (link to the github repository)'
-        required: true
+        description: 'Short description of the package to display on the index (optional)'
+        required: false
         type: string
 
 jobs:
-  update:
+  register:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
       pull-requests: write
 
-    strategy:
-      matrix:
-        python-version: ["3.10"]
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        python-version: "3.10"
-    - name: Run Action
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install beautifulsoup4
+
+    - name: Register Package from GitHub Releases
       env:
         PKG_ACTION: REGISTER
+        PKG_REPO: ${{ inputs.repository }}
+        PKG_TAG: ${{ inputs.tag }}
         PKG_NAME: ${{ inputs.package_name }}
-        PKG_VERSION: ${{ inputs.version }}
         PKG_AUTHOR: ${{ inputs.author }}
         PKG_SHORT_DESC: ${{ inputs.short_desc }}
-        PKG_HOMEPAGE: ${{ inputs.homepage }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        pip install beautifulsoup4
-        python .github/actions.py 
+        python .github/actions.py
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        commit-message  : ':package: [:robot:] Register package in PyPi index'
-        title: '[🤖] Register `${{ inputs.package_name }}` in PyPi index'
-        body: Automatically generated PR, registering `${{ inputs.package_name }}` in PyPi
-          index.
+        commit-message: ':package: [:robot:] Register package ${{ inputs.package_name || inputs.repository }} in PyPi index'
+        title: '[🤖] Register `${{ inputs.package_name || inputs.repository }}` in PyPi index'
+        body: Automatically generated PR registering `${{ inputs.package_name || inputs.repository }}` pre-built release wheels in PyPi index.
         branch-suffix: random
         delete-branch: true

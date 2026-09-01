@@ -1,118 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+  <meta name="pypi:repository-version" content="1.0" />
   
   <!-- Skeleton CSS -->
   <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" />
   
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&amp;display=swap" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" type="text/css" />
   
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  
-  <!-- Marked parser -->
+  <!-- JQuery & Marked parser -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  
-  <!-- Favicon -->
-  <link href="https://gist.githubusercontent.com/astariul/c09af596e802e945d3032774e10e1047/raw/f693a2e2b65966494da082887bc4be2917f615e4/random_icon.svg" rel="icon" />
   
   <!-- Custom Styles -->
   <link href="../static/package_styles.css" rel="stylesheet" />
-  
-  <!-- Our JS -->
-  <script type="text/javascript" src="../static/pypi_checker.js"></script>
   <script src="../static/package_page.js" defer></script>
   
-  <title>
-    Pypi - YourCompany
-  </title>
+  <title>_package_name - ggmlc PyPi Index</title>
 </head>
   
 <body>
   <div class="container">
-    <section class="header">
-      <button onclick="redirectToIndex()" class="goback-button">
-        <svg width="50" height="50">
-          <circle cx="25" cy="25" r="20" fill="#1EAEDB" />
-          <path d="M15 25l10-10v5h10v10h-10v5z" fill="white" />
+    <header class="header">
+      <button onclick="redirectToIndex()" class="goback-button" title="Back to Index">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
       </button>
-      _package_name
-      <span>
-      </span>
-      <span id='latest-version' class="version">
-        _version
-      </span>
-      <span id='latest-main-version' hidden>
-        _latest_main
-      </span>
-    </section>
-    
-    <pre id='installdanger' hidden>
-      <button class="danger-button" disabled>
-        DANGER ! A higher version of <i>_package_name</i> already exists on PyPi
-      </button>
-    </pre>
-    
-    <pre id='installcmd'>
-      <code>pip install _package_name --extra-index-url https://astariul.github.io/github-hosted-pypi/</code>
-    </pre>
-    
-    <hr />
-    
-    <div class="row">
-      <div class="three columns">
-        <b>
-          Project links
-        </b>
-        <button id="repoHomepage" onclick="openLinkInNewTab('_homepage')">
-          Homepage
-        </button>
-        <p class="elem">
-          <b>
-            Author :
-          </b>
-          _author
-        </p>
-        <section class="versions" id="versions">
-          <div id="_version" onclick="load_readme('_version', scroll_to_div=true)">
-            <a href="_link">
-              _norm_version
-            </a>
-          </div>
-        </section>
+      <div class="header-titles">
+        <h1 class="pkg-main-title">_package_name</h1>
+        <span id="latest-version" class="version-pill">_latest_version</span>
+        <span id="latest-tag" hidden>_latest_tag</span>
       </div>
-      
-      <div class="nine columns" id="description_pkg">
-        <h6 class="text-header">
-          Description
-        </h6>
-        <p id="markdown-container" class="readme-block">
-        </p>
+    </header>
+
+    <div class="install-card">
+      <div class="install-label">Install command:</div>
+      <div class="install-command-wrapper">
+        <code id="pip-install-cmd">pip install _package_name --extra-index-url https://monatis.github.io/ggmlc-index/</code>
+        <button id="copy-btn" class="copy-button" onclick="copyInstallCmd()" title="Copy command">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-text">Copy</span>
+        </button>
       </div>
     </div>
+
+    <div class="row main-layout">
+      <!-- Sidebar -->
+      <aside class="four columns sidebar">
+        <div class="sidebar-card">
+          <h6 class="sidebar-title">Project Info</h6>
+          <div class="meta-item">
+            <span class="meta-label">Author:</span>
+            <span id="author-name" class="meta-value">_author</span>
+          </div>
+          <div class="meta-item" id="package-short-desc" style="display:none;">_short_description</div>
+          <div class="meta-item">
+            <button id="repoHomepage" class="button-primary-outline" onclick="openLinkInNewTab('_homepage')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub Repository
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h6 class="sidebar-title">Releases</h6>
+          <div class="versions-list" id="versions">
+<!-- _VERSIONS_LIST_ -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="eight columns content-pane">
+        <!-- Distribution Files (PEP 503 links) -->
+        <section class="section-card" id="distribution-files">
+          <h5 class="section-title">Pre-built Distribution Packages</h5>
+          <p class="section-desc">Downloadable wheels and source archives for direct installation or pip discovery:</p>
+<!-- _FILES_SECTIONS_ -->
+        </section>
+
+        <!-- README Description -->
+        <section class="section-card" id="description_pkg">
+          <h5 class="section-title">Documentation</h5>
+          <div id="markdown-container" class="readme-content">
+            <div class="loading-readme">Loading documentation...</div>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
-  
+
   <script>
+    var current_repo_owner = '_repo_owner';
+    var current_repo_name = '_repo_name';
     var url_readme_main = '_long_description';
-    
-    $(document).ready(function () {
-      var this_vers = document.getElementById('latest-main-version').textContent.trim();
-      document.getElementById(this_vers).classList.add('main');
-      check_supply_chain_attack("_package_name", this_vers, warn_unsafe);
-    
-      if (window.location.hash != "") {
-        let version_hash = window.location.hash;
-        version = version_hash.replace('#', '');
-        load_readme(version, scroll_to_div=true);
-        return;
-      }
-      load_readme(this_vers);
-    });
   </script>
 </body>
 </html>

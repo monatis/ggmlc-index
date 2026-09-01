@@ -2,82 +2,101 @@ function openLinkInNewTab(link) {
   window.open(link, '_blank');
 }
 
-function load_readme(version, scroll_to_div=false){
-  addDynamicClickDelegation(`${version}`);
-
-  let urlVersion = url_readme_main.replace('main', version);
-  fetch(urlVersion)
-  .then(response => {
-      if (!response.ok) {
-          if (response.status == 404) {
-            return 'No README found for this version';
-          }
-          throw new Error(`Failed to fetch content. Status code: ${response.status}`);
-      }
-      return response.text();
-  })
-  .then(markupContent => {
-    const contentDivs = document.querySelectorAll('.versions div');
-    contentDivs.forEach(div => div.classList.remove('selected'));
-
-    document.getElementById(version).classList.add('selected');
-    document.getElementById('markdown-container').innerHTML = marked.parse(markupContent);
-    if (scroll_to_div) {
-      // document.getElementById('description_pkg').scrollIntoView();
-      history.replaceState(null, null, '#'+version);
-    }
-  })
-  .catch(error => {
-      console.error('Error:', error.message);
-  });
-}
-
-function put_readme(version, markupContent, scroll_to_div=false){
-  addDynamicClickDelegation(`${version}`);
-
-  const contentDivs = document.querySelectorAll('.versions div');
-  contentDivs.forEach(div => div.classList.remove('selected'));
-
-  document.getElementById(version).classList.add('selected');
-  document.getElementById('markdown-container').innerHTML = marked.parse(markupContent);
-  if (scroll_to_div) {
-    // document.getElementById('description_pkg').scrollIntoView();
-    history.replaceState(null, null, '#'+version);
-  }
-}
-
-function warn_unsafe() {
-  document.getElementById('installdanger').hidden = false;
-  document.getElementById('installcmd').hidden = true;
-}
-
 function redirectToIndex() {
   window.location.href = "../index.html";
 }
 
-function addDynamicClickDelegation(parentId) {
-  const parentDiv = document.getElementById(parentId);
+function copyInstallCmd() {
+  const cmdText = document.getElementById('pip-install-cmd').innerText;
+  navigator.clipboard.writeText(cmdText).then(() => {
+    const copyText = document.getElementById('copy-text');
+    const originalText = copyText.innerText;
+    copyText.innerText = "Copied!";
+    setTimeout(() => {
+      copyText.innerText = originalText;
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
 
-  if (parentDiv) {
-      parentDiv.addEventListener('click', function (event) {
-          if (event.target !== this) {
-              event.stopPropagation();
-              this.click(); // Trigger the parent div's onclick function
-          }
+function selectVersion(tag, updateHash = true) {
+  // Update version selector highlight
+  const allVersionItems = document.querySelectorAll('.version-item');
+  allVersionItems.forEach(item => item.classList.remove('selected'));
+  
+  const selectedItem = document.getElementById('ver-' + tag);
+  if (selectedItem) {
+    selectedItem.classList.add('selected');
+  }
+
+  // Toggle file lists
+  const allFileSections = document.querySelectorAll('.files-version-section');
+  allFileSections.forEach(sec => sec.style.display = 'none');
+
+  const selectedFileSec = document.getElementById('files-' + tag);
+  if (selectedFileSec) {
+    selectedFileSec.style.display = 'block';
+  }
+
+  if (updateHash) {
+    history.replaceState(null, null, '#' + tag);
+  }
+
+  loadReadme(tag);
+}
+
+function loadReadme(tag) {
+  const container = document.getElementById('markdown-container');
+  container.innerHTML = '<div class="loading-readme">Loading documentation for ' + tag + '...</div>';
+
+  const candidateUrls = [
+    `https://raw.githubusercontent.com/${current_repo_owner}/${current_repo_name}/${tag}/README.md`,
+    `https://raw.githubusercontent.com/${current_repo_owner}/${current_repo_name}/main/README.md`,
+    `https://raw.githubusercontent.com/${current_repo_owner}/${current_repo_name}/master/README.md`
+  ];
+
+  function tryFetch(index) {
+    if (index >= candidateUrls.length) {
+      container.innerHTML = '<p class="text-muted">No README documentation found for this release.</p>';
+      return;
+    }
+    fetch(candidateUrls[index])
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Not found');
+        }
+        return response.text();
+      })
+      .then(markdown => {
+        container.innerHTML = marked.parse(markdown);
+      })
+      .catch(() => {
+        tryFetch(index + 1);
       });
   }
+
+  tryFetch(0);
 }
 
-function removeHrefFromAnchors() {
-  var versionsSection = document.getElementById('versions');
-  if (versionsSection) {
-      var anchors = versionsSection.getElementsByTagName('a');
-      for (var i = 0; i < anchors.length; i++) {
-          anchors[i].removeAttribute('href');
-      }
+document.addEventListener('DOMContentLoaded', () => {
+  let activeTag = '';
+  if (window.location.hash) {
+    activeTag = window.location.hash.replace('#', '');
   }
-}
+  if (!activeTag || !document.getElementById('ver-' + activeTag)) {
+    const latestTagElem = document.getElementById('latest-tag');
+    if (latestTagElem && latestTagElem.textContent.trim()) {
+      activeTag = latestTagElem.textContent.trim();
+    } else {
+      const firstVerItem = document.querySelector('.version-item');
+      if (firstVerItem) {
+        activeTag = firstVerItem.id.replace('ver-', '');
+      }
+    }
+  }
 
-window.onload = function() {
-  removeHrefFromAnchors();
-};
+  if (activeTag) {
+    selectVersion(activeTag, false);
+  }
+});

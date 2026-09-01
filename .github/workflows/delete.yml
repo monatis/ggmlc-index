@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       package_name:
-        description: Package name
+        description: 'Package name to delete (e.g. ggmlc)'
         required: true
+        type: string
+      version:
+        description: 'Specific version/tag to delete (optional; leaves other versions intact, or delete entire package if empty)'
+        required: false
         type: string
 
 jobs:
@@ -16,29 +20,33 @@ jobs:
       contents: write
       pull-requests: write
 
-    strategy:
-      matrix:
-        python-version: ["3.10"]
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v6
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
-    - name: Run Action
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install beautifulsoup4
+
+    - name: Delete Package / Version from Index
       env:
         PKG_ACTION: DELETE
         PKG_NAME: ${{ inputs.package_name }}
+        PKG_TAG: ${{ inputs.version }}
       run: |
-        pip install beautifulsoup4
-        python .github/actions.py 
+        python .github/actions.py
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        commit-message: ':package: [:robot:] Delete package from PyPi index'
-        title: '[🤖] Delete `${{ inputs.package_name }}` from PyPi index'
-        body: Automatically generated PR, deleting `${{ inputs.package_name }}` from
-          PyPi index.
+        commit-message: ':package: [:robot:] Delete ${{ inputs.package_name }} ${{ inputs.version }} from PyPi index'
+        title: '[🤖] Delete `${{ inputs.package_name }}` ${{ inputs.version }} from PyPi index'
+        body: Automatically generated PR deleting `${{ inputs.package_name }}` ${{ inputs.version }} from PyPi index.
         branch-suffix: random
         delete-branch: true

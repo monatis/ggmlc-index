@@ -1,89 +1,170 @@
+/* Base styling */
+:root {
+  --primary-color: #0284c7;
+  --primary-hover: #0369a1;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 body {
-  font-family: "Montserrat";
-  padding-bottom: 64px;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  padding: 2rem 1rem 4rem 1rem;
+  line-height: 1.6;
 }
 
-code {
-  font-size: 100%;
-  display: inline-block !important;
-  font-size: 1.3rem;
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
+/* Header */
 .header {
-  margin-top: 6rem;
   text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
 }
 
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* Instructions card */
+.intro-card {
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.intro-card p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+.intro-card pre {
+  margin: 0;
+  background: #0f172a;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.intro-card code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  color: #38bdf8;
+}
+
+/* Section Header */
 .text-header {
   text-transform: uppercase;
-  font-size: 1.4rem;
-  letter-spacing: .2rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Package Cards Grid */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .card {
-  display: inline-block;
-  height: auto;
-  min-width: 32%;
-  padding: 0.5rem 2rem;
-  margin: 0.5rem 0.5rem;
-  color: #555;
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: .05rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
   text-decoration: none;
-  white-space: normal;
-  background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #bbb;
-  cursor: pointer;
-  box-sizing: border-box;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
 }
 
 .card:hover {
-  border-color: darkcyan;
-  color: darkcyan;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-.version {
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.description {
-  font-weight: 300;
-}
-
-.redalert {
-  border-color: crimson;
-  color: crimson;
-}
-
-.redalert:hover {
-  border-color: tomato;
-  color: tomato;
-}
-
-/* Footer */
-body {
-  margin: 0;
+.card-header {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
-.content {
-  flex: 1;
-  padding: 20px;
+.pkg-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
-.footer {
-  background-color: #f5f5f5;
-  color: #08183f;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
+.card .version {
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.card .description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* Search bar */
+.search-box {
   width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
