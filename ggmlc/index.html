@@ -41,8 +41,8 @@
       </button>
       <div class="header-titles">
         <h1 class="pkg-main-title">ggmlc</h1>
-        <span id="latest-version" class="version-pill">0.6.7</span>
-        <span id="latest-tag" hidden>v0.6.7</span>
+        <span id="latest-version" class="version-pill">0.7.0</span>
+        <span id="latest-tag" hidden>v0.7.0</span>
       </div>
     </header>
 
@@ -84,9 +84,14 @@
           <h6 class="sidebar-title">Releases</h6>
           <div class="versions-list" id="versions">
 
-        <div id="ver-v0.6.7" class="version-item selected" onclick="selectVersion('v0.6.7')">
-          <span class="version-tag">v0.6.7</span>
+        <div id="ver-v0.7.0" class="version-item selected" onclick="selectVersion('v0.7.0')">
+          <span class="version-tag">v0.7.0</span>
           <span class="version-badge latest">Latest stable</span>
+        </div>
+
+        <div id="ver-v0.6.7" class="version-item" onclick="selectVersion('v0.6.7')">
+          <span class="version-tag">v0.6.7</span>
+          <span class="version-badge stable">Stable</span>
         </div>
 
         <div id="ver-v0.6.6" class="version-item" onclick="selectVersion('v0.6.6')">
@@ -179,7 +184,356 @@
           <h5 class="section-title">Pre-built Distribution Packages</h5>
           <p class="section-desc">Downloadable wheels and source archives for direct installation or pip discovery:</p>
 
-        <div id="files-v0.6.7" class="files-version-section" >
+        <div id="files-v0.7.0" class="files-version-section" >
+          <div class="files-header">
+            <h4>Files for v0.7.0</h4>
+          </div>
+          <div class="files-list">
+            
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp311-cp311-macosx_11_0_arm64.whl#sha256=aced2e886350558246264b9ade65cc82ae778383263197798a6443f9ad3a6aaa">ggmlc-0.7.0-cp311-cp311-macosx_11_0_arm64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">macOS (Apple Silicon)</span>
+                <span class="badge badge-python">CPython 3.11</span>
+                <span class="badge badge-size">870.1 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl#sha256=5712bd22202da580eaa610fcb86974b4edc66f0ba4bb5c7774675ba5bdde43bd">ggmlc-0.7.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Linux x86_64</span>
+                <span class="badge badge-python">CPython 3.11</span>
+                <span class="badge badge-size">130.6 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp311-cp311-win_amd64.whl#sha256=b370999db2dfb8e8838ec6fec24eea3dfba5b1cdd4bc1ff95d96f0c7a72a3c14">ggmlc-0.7.0-cp311-cp311-win_amd64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Windows x86_64</span>
+                <span class="badge badge-python">CPython 3.11</span>
+                <span class="badge badge-size">129.5 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp312-cp312-macosx_11_0_arm64.whl#sha256=7e52889504c90ae3a1814ead8f901ab59f9e193946f37dbae78465a7a0771522">ggmlc-0.7.0-cp312-cp312-macosx_11_0_arm64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">macOS (Apple Silicon)</span>
+                <span class="badge badge-python">CPython 3.12</span>
+                <span class="badge badge-size">869.3 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl#sha256=bca1fdf086820c0d9cd8649fe2da11c5cd0ace45a32300ce4c9fdf8340742dfc">ggmlc-0.7.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Linux x86_64</span>
+                <span class="badge badge-python">CPython 3.12</span>
+                <span class="badge badge-size">130.6 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp312-cp312-win_amd64.whl#sha256=7d36cb31702f6c052d7cc1dbf80a84adf29953a5dd9d5ee5254116bceaa803a7">ggmlc-0.7.0-cp312-cp312-win_amd64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Windows x86_64</span>
+                <span class="badge badge-python">CPython 3.12</span>
+                <span class="badge badge-size">129.5 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp313-cp313-macosx_11_0_arm64.whl#sha256=e83b6c15d38c70fcb0bbae36dcacf0bd9b304dda941b1cb2c1991b8f9be7f500">ggmlc-0.7.0-cp313-cp313-macosx_11_0_arm64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">macOS (Apple Silicon)</span>
+                <span class="badge badge-python">CPython 3.13</span>
+                <span class="badge badge-size">869.2 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl#sha256=0379c1821e73073b3a89f3d4eda53d0e8ed4bdc69f14c89f4d9fa3d412b7eb6f">ggmlc-0.7.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Linux x86_64</span>
+                <span class="badge badge-python">CPython 3.13</span>
+                <span class="badge badge-size">130.6 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0-cp313-cp313-win_amd64.whl#sha256=59816f627bf75249c86d9fc442b989d4247f7654a948061486b08701d6db2039">ggmlc-0.7.0-cp313-cp313-win_amd64.whl</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Windows x86_64</span>
+                <span class="badge badge-python">CPython 3.13</span>
+                <span class="badge badge-size">129.5 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-0.7.0.tar.gz#sha256=e6dffbb8c2eaa748ded2489b960265e7f523db74bcaec95234ca5bd0bda6fad6">ggmlc-0.7.0.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">4.4 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-linux-x86_64-cuda-sm80.tar.gz#sha256=bb45e1c512d9eb7eb63f98b84927dd47d1d3f3f1c6509fabde1bbe84807d7d1d">ggmlc-run-linux-x86_64-cuda-sm80.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">68.0 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-linux-x86_64-cuda-sm86.tar.gz#sha256=5578915d174bf98f47e4f0f5120158c6561486b2ae865cbb1c0c0faaacf815e0">ggmlc-run-linux-x86_64-cuda-sm86.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.9 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-linux-x86_64-cuda-sm89.tar.gz#sha256=7d6a9715be6bad3f7e2eae601d1d6ac13af920d8e8d72dcb6e9816b39d654b87">ggmlc-run-linux-x86_64-cuda-sm89.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.9 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-macos-arm64-metal.tar.gz#sha256=4271b00f96bf4e97c8d37dfa3c2d3f9ba5933064816a709bb7784ce31481061b">ggmlc-run-macos-arm64-metal.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">1020.5 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-windows-x86_64-cuda-sm86.zip#sha256=5be1c5c5a52c40c3cadff8b8456664d9dcece644019337e21ac6525aff7cd5f1">ggmlc-run-windows-x86_64-cuda-sm86.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.4 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/ggmlc-run-windows-x86_64-cuda-sm89.zip#sha256=e6540ea6102d408285e59302fc994b4044df20fd82766cec6f53b2237e79cdc1">ggmlc-run-windows-x86_64-cuda-sm89.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.3 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-linux-x86_64-cuda-sm80.tar.gz#sha256=7a52a00d231d9bb7c5cf5668d041ad91a4343cc5f43b56318a481ce3d1a400c4">tab_completion-linux-x86_64-cuda-sm80.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">67.9 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-linux-x86_64-cuda-sm86.tar.gz#sha256=d2200c55399218365a4665f5db1a6faa1263177f269439aaa3c5a1562ae13377">tab_completion-linux-x86_64-cuda-sm86.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.8 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-linux-x86_64-cuda-sm89.tar.gz#sha256=4dad561cf22b2a3f26f6611ea6c85bd859d0c6a17f81df010463b5b405bc1f21">tab_completion-linux-x86_64-cuda-sm89.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.8 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-macos-arm64-metal.tar.gz#sha256=8fb1f9b95a04e5ac44fc4b26727caf7aa1def9086eb24191d46a005e6b6abe97">tab_completion-macos-arm64-metal.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">939.7 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-windows-x86_64-cuda-sm86.zip#sha256=5a3a2148e9ebf32216c6615e764032ac7847d749251da8f47f1deac28998e458">tab_completion-windows-x86_64-cuda-sm86.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.4 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/tab_completion-windows-x86_64-cuda-sm89.zip#sha256=ee0c9220c229cf9a3e3094642c2ec28038948fb287f09c381f90d46b32220450">tab_completion-windows-x86_64-cuda-sm89.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.3 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-linux-x86_64-cuda-sm80.tar.gz#sha256=c8bdae53b3ee8deb1a6272eea7d2218fedd13f1a54d8acfeaa998aec4060d72f">timesfm-linux-x86_64-cuda-sm80.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">67.9 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-linux-x86_64-cuda-sm86.tar.gz#sha256=392ec76015beb07901da82b2c0ae0607923ba7427d048b163d3352caaed4d81b">timesfm-linux-x86_64-cuda-sm86.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.8 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-linux-x86_64-cuda-sm89.tar.gz#sha256=b8d3b3e607a0b0c74f9f14294e33cb73b3f23f7f2031e405397c8fd99aad411b">timesfm-linux-x86_64-cuda-sm89.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.8 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-macos-arm64-metal.tar.gz#sha256=9397ee53246a29c24c0022e4360d71daec6186bbfd7d57eff1d243227534205f">timesfm-macos-arm64-metal.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">950.3 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-windows-x86_64-cuda-sm86.zip#sha256=fb4a893e6598319bcbada504efa2a3a8db5488f575bf73ea3ff5041c56bcaef0">timesfm-windows-x86_64-cuda-sm86.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.4 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm-windows-x86_64-cuda-sm89.zip#sha256=ca57b22935102f71ecf1b16ce781af2a5cf3db4da5d051029293730c09bcb30e">timesfm-windows-x86_64-cuda-sm89.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.3 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-linux-x86_64-cuda-sm80.tar.gz#sha256=bac7043d12c418819653cd38f998aa4f51b6abbc4ca53e4fe5d64e5e5e477d08">timesfm_bench-linux-x86_64-cuda-sm80.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">67.9 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-linux-x86_64-cuda-sm86.tar.gz#sha256=f427da76af3fb7654c31687b71df58e45b44eb6b2b314c3c319b4944058c81b4">timesfm_bench-linux-x86_64-cuda-sm86.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.8 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-linux-x86_64-cuda-sm89.tar.gz#sha256=3e8dcbfa313313ef2513b65ec1792db422b9b62a97ea4dfa3ea7937b44ab1077">timesfm_bench-linux-x86_64-cuda-sm89.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.7 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-macos-arm64-metal.tar.gz#sha256=4ad6a229ecd87530209137a024c1cd473fe7f55f5c8de1e22bd8091fff50a34a">timesfm_bench-macos-arm64-metal.tar.gz</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">907.8 KB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-windows-x86_64-cuda-sm86.zip#sha256=c2f0e979dd5d027cff2598c3959575eecc81af39045ffb0f306aeeb751d7a93e">timesfm_bench-windows-x86_64-cuda-sm86.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.3 MB</span>
+              </div>
+            </div>
+            <div class="file-card">
+              <div class="file-header">
+                <a class="file-link" href="https://github.com/monatis/ggmlc/releases/download/v0.7.0/timesfm_bench-windows-x86_64-cuda-sm89.zip#sha256=ff2a68b3a52c20dcab0cc6ce8db83a16431e7b4b210d808b31887238aad4b58b">timesfm_bench-windows-x86_64-cuda-sm89.zip</a>
+              </div>
+              <div class="file-badges">
+                <span class="badge badge-platform">Source Archive</span>
+                <span class="badge badge-python">Source</span>
+                <span class="badge badge-size">66.2 MB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="files-v0.6.7" class="files-version-section" style="display:none;">
           <div class="files-header">
             <h4>Files for v0.6.7</h4>
           </div>
